@@ -1,20 +1,14 @@
 import styled from "styled-components";
-import { Input } from "./Input";
+import { Input } from "../shared/components/Input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useAppData } from "../AppContext";
 import { useHistory } from "react-router";
 import { Button } from "../shared/components/Button";
+import { Form } from "../shared/components/Form";
 
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  h1 {
-    display: none;
-  }
-`;
+
 
 const FormContainer = styled.div`
   width: 80%;

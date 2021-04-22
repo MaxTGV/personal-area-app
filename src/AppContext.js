@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState();
   const [isLogged, setIsLogged] = useState(false);
   const [userData, setUserData] = useState();
 
@@ -17,21 +17,26 @@ export const AppProvider = ({ children }) => {
     setIsLogged(false);
   };
 
-  const addContacts = (data) => {
-    setContacts([...contacts, data]);
+  const addContacts = (user) => {
+    setContacts([user, ...contacts]);
   };
 
-  const updateContact = () => {};
-
-  const removeContact = ({ id }) => {
-    const newContactsList = contacts.filter((contact) => contact.id !== id);
+  const updateContact = (user) => {
+    const { id, name, phone, email } = user;
+    const newContactsList = contacts.map((contact) => {
+      if (contact.id === +id) {
+        contact.name = name;
+        contact.phone = phone;
+        contact.email = email;
+      }
+      return contact;
+    });
     setContacts(newContactsList);
   };
 
-  const searchContact = ({ value, contacts }) => {
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(value.toLowerCase())
-    );
+  const removeContact = (id) => {
+    const newContactsList = contacts.filter((contact) => contact.id !== id);
+    setContacts(newContactsList);
   };
 
   return (
@@ -42,7 +47,7 @@ export const AppProvider = ({ children }) => {
         userData,
         login,
         logout,
-        searchContact,
+        setContacts,
         updateContact,
         addContacts,
         removeContact,
