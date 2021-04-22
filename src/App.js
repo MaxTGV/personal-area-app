@@ -26,7 +26,7 @@ export const App = () => {
       setContacts(data);
     };
     loadData();
-  }, []);
+  }, [setContacts]);
 
   return (
     <AppContainer>
