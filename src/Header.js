@@ -2,20 +2,21 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledHeader = styled.div`
-  margin: 0 auto;
-  width: 500px;
+  width: 100%;
   height: 50px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: #f9f9fb;
+  box-shadow: 0px 3px 4px rgba(46, 49, 55, 0.05),
+    0px 0px 2px rgba(46, 49, 55, 0.15);
 `;
 
 const HeaderItem = styled.span`
-  border: 2px solid #e1e1ed;
+  border: 2px solid transparent;
   border-radius: 12px;
   padding: 5px 10px;
   &:hover {
+    border: 2px solid #e1e1ed;
     box-shadow: 0px 3px 4px rgba(75, 75, 124, 0.05),
       0px 0px 2px rgba(75, 75, 124, 0.2);
   }
@@ -28,7 +29,7 @@ const HeaderItem = styled.span`
     font-weight: bold;
     font-size: 16px;
     line-height: 24px;
-    color: #1f1f33;
+    color: #4b4b7c;
   }
 `;
 
